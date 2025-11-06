@@ -1,4 +1,10 @@
 // src/App.tsx
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
+import logo from "./assets/logo.png"
 import React, { useEffect, useRef, useState } from "react";
 import {
   BrowserRouter,
@@ -103,9 +109,8 @@ const StepsProgress: React.FC = () => {
     "/booking-summary": 3,
   } as Record<string, number>;
   const step = map[location.pathname] ?? 0;
-
-  const labels = ["Ride Details", "Choose a Vehicle", "Contact Details", "Booking Summary"];
-
+  const labels = ["Ride Details", "Choose a Vehicle", "Contact Details", "Booking Summary"]
+const App: React.FC = () => {
   return (
     <div style={{ display: "flex", gap: 12, alignItems: "center", margin: "20px 0" }}>
       {labels.map((lbl, i) => (
@@ -308,39 +313,35 @@ const BookingSummary: React.FC = () => {
  */
 export default function App() {
   return (
-    <BrowserRouter>
-      <div style={{ background: "#000", color: "#fff", minHeight: "100vh", paddingBottom: 80 }}>
-        <header style={{ padding: 20, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ fontWeight: 800 }}>Tiffany Towncar (demo)</div>
-          <nav style={{ display: "flex", gap: 14 }}>
-            <Link to="/" style={{ color: "#fff", textDecoration: "none" }}>Home</Link>
-            <Link to="/blog" style={{ color: "#fff", textDecoration: "none" }}>Blog</Link>
-            <Link to="/faqs" style={{ color: "#fff", textDecoration: "none" }}>FAQ's</Link>
-            <Link to="/ride-details" style={{ color: "#fff", textDecoration: "none" }}>Reservations</Link>
-          </nav>
-        </header>
+   
+      {/* Navbar */}
+      <nav className="flex justify-between items-center px-8 py-4 bg-black text-white shadow-md">
+    
+        <div className="flex items-center space-x-3">
+          <img src={logo} alt="Tiffany Towncar logo" className="h-12 w-auto" />
+        </div>
 
-        <main style={{ padding: "0 20px" }}>
-          <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-            <StepsProgress />
+        <ul className="flex space-x-8 text-sm font-medium">
+          <li>
+            <Link to="/" className="hover:text-gray-300 transition">Home</Link>
+          </li>
+          <li>
+            <Link to="/blog" className="hover:text-gray-300 transition">Blog</Link>
+          </li>
+          <li>
+            <Link to="/contact" className="hover:text-gray-300 transition">Contact Us</Link>
+          </li>
+        </ul>
+      </nav>
 
-            <Routes>
-              <Route path="/" element={<RideDetails />} />
-              <Route path="/ride-details" element={<RideDetails />} />
-              <Route path="/choose-vehicle" element={<ChooseVehicle />} />
-              <Route path="/contact-details" element={<ContactDetails />} />
-              <Route path="/booking-summary" element={<BookingSummary />} />
-              {/* Simple stubs for other top nav pages */}
-              <Route path="/blog" element={<div style={{ padding: 20 }}><h2>Blog (placeholder)</h2></div>} />
-              <Route path="/faqs" element={<div style={{ padding: 20 }}><h2>FAQ's (placeholder)</h2></div>} />
-            </Routes>
-          </div>
-        </main>
-
-        <footer style={{ borderTop: "1px solid #222", marginTop: 60, padding: 20, color: "#aaa" }}>
-          <div style={{ maxWidth: 1000, margin: "0 auto" }}>Footer — contact, service area, business hours</div>
-        </footer>
-      </div>
-    </BrowserRouter>
+      {/* Page routes */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </>
   );
-}
+};
+
+export default App;
