@@ -16,20 +16,26 @@ const App: React.FC = () => {
 
         <ul className="flex space-x-8 text-sm font-medium">
           <li>
-            <Link to="/" className="hover:text-gray-300 transition">Home</Link>
+            <Link to="/" className="hover:text-gray-300 transition">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/blog" className="hover:text-gray-300 transition">Blog</Link>
+            <Link to="/blog" className="hover:text-gray-300 transition">
+              Blog
+            </Link>
           </li>
           <li>
-            <Link to="/contact" className="hover:text-gray-300 transition">Contact Us</Link>
+            <Link to="/contact" className="hover:text-gray-300 transition">
+              Contact Us
+            </Link>
           </li>
         </ul>
       </nav>
 
       {/* Page routes */}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/*" element={<Home />} /> {/* Home includes nested steps */}
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
