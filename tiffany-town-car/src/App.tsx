@@ -5,6 +5,7 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import logo from "./assets/logo.png"
 
+
 const App: React.FC = () => {
   return (
     <>
