@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Loader } from "@googlemaps/js-api-loader";
+//import { Loader } from "@googlemaps/js-api-loader";
 import useLocalStorageState from "../../hooks/useLocalStorageState";
 
 // 👇 Let TypeScript know Google Maps will add a global "google" object
-declare const google: any;
+declare const google: unknown;
 
 /**
  * RideDetails component
@@ -93,7 +93,7 @@ export default function RideDetails() {
 
   // --------------------------- UI ---------------------------
   return (
-    <div className="bg-gray-900 text-white p-8 rounded-xl max-w-3xl mx-auto mt-10 shadow-lg">
+    <div className="bg-gray-900 text-white p-8 rounded-xl max-w-3xl mx-auto mt-10 shadow-lg ">
       <h2 className="text-2xl font-semibold mb-6">Ride Details</h2>
 
       <div className="space-y-4">
@@ -149,7 +149,7 @@ export default function RideDetails() {
         {/* Next Button */}
         <button
           onClick={handleNext}
-          className="bg-blue-600 hover:bg-blue-700 transition text-white py-2 px-6 rounded mt-4"
+          className="mt-10 bg-gray-200 text-black font-semibold px-10 py-3 rounded-lg hover:bg-white transition"
         >
           Next: Choose Vehicle →
         </button>
