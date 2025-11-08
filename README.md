@@ -17,3 +17,6 @@ Ride Details: Choose date, time, and ride type
 Vehicle Selection: Pick a vehicle and see price
 Contact Details: Fill out passenger information
 Summary: Review and confirm your booking
+
+![Tiffany Town Car Demo](src/assets/demo.gif)
+
