@@ -22,11 +22,11 @@ function Home(): JSX.Element {
   const currentStep = stepIndex[location.pathname] ?? 0;
 
   return (
-    <div className="bg-black text-white min-h-screen font-sans">
+    <div className="bg-black text-white min-h-screen font-sans ">
 
       {/* Hero Section */}
       <section
-        className="relative flex flex-col justify-center items-center text-center py-20"
+        className="relative flex flex-col justify-center items-center text-center py-20 "
         style={{
           backgroundImage: `url(${mainimg})`,
           backgroundSize: "cover",
