@@ -7,18 +7,11 @@ export default function BookingSummary() {
 
   useEffect(() => {
     const storedRide = JSON.parse(localStorage.getItem("rideDetails") || "null");
-    const selectedVehicle = localStorage.getItem("selectedVehicle");
+    const selectedVehicle = JSON.parse(localStorage.getItem("selectedVehicle") || "null");
     const contactDetails = JSON.parse(localStorage.getItem("contactDetails") || "null");
 
-    // Example data for vehicles (you can match with ChooseVehicle.tsx)
-    const vehicles: Record<string, any> = {
-      "Town Car": { price: "$95.00" },
-      "Mini-Van": { price: "$120.00" },
-      SUV: { price: "$140.00" },
-    };
-
     setRideDetails(storedRide);
-    setVehicle(selectedVehicle ? { name: selectedVehicle, ...vehicles[selectedVehicle] } : null);
+    setVehicle(selectedVehicle);
     setContact(contactDetails);
   }, []);
 
@@ -52,9 +45,20 @@ export default function BookingSummary() {
         <div>
           <h2 className="text-xl font-semibold mb-3 border-b border-gray-700 pb-2">Vehicle</h2>
           {vehicle ? (
-            <div className="space-y-2 text-gray-300">
-              <p><span className="font-medium text-white">Type:</span> {vehicle.name}</p>
-              <p><span className="font-medium text-white">Price:</span> {vehicle.price}</p>
+            <div className="flex items-center gap-4 text-gray-300">
+              {vehicle.image && (
+                <img
+                  src={vehicle.image}
+                  alt={vehicle.name}
+                  className="w-32 h-20 object-cover rounded-lg"
+                />
+              )}
+              <div>
+                <p><span className="font-medium text-white">Type:</span> {vehicle.name}</p>
+                <p><span className="font-medium text-white">Seats:</span> {vehicle.seats}</p>
+                <p><span className="font-medium text-white">Luggage:</span> {vehicle.luggage}</p>
+                <p><span className="font-medium text-white">Price:</span> {vehicle.price}</p>
+              </div>
             </div>
           ) : (
             <p className="text-gray-500">No vehicle selected.</p>
