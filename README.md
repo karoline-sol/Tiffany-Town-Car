@@ -17,3 +17,5 @@ Ride Details: Choose date, time, and ride type
 Vehicle Selection: Pick a vehicle and see price
 Contact Details: Fill out passenger information
 Summary: Review and confirm your booking
+
+![demo-ezgif com-resize](https://github.com/user-attachments/assets/1a3b3251-60a0-4861-bf58-780af11e7756)
