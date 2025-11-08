@@ -32,7 +32,7 @@ export default function ContactDetails() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center px-6 py-12">
+    <div className="animate-slide-in min-h-screen bg-black text-white flex flex-col items-center px-6 py-12">
       <h1 className="text-3xl font-semibold mb-10">Contact Details</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl">

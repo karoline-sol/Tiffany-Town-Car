@@ -21,7 +21,7 @@ export default function BookingSummary() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center px-6 py-10">
+    <div className="animate-slide-in min-h-screen bg-black text-white flex flex-col items-center px-6 py-10">
       <h1 className="text-3xl font-semibold mb-8">Booking Summary</h1>
 
       <div className="bg-gray-900 rounded-2xl shadow-lg p-6 w-full max-w-3xl space-y-6">

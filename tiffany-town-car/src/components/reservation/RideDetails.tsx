@@ -80,7 +80,7 @@ export default function RideDetails() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center px-6 py-12">
+    <div className="animate-slide-in min-h-screen bg-black text-white flex flex-col items-center px-6 py-12">
       <h1 className="text-3xl font-semibold mb-8">Ride Details</h1>
 
       <div className="flex flex-col gap-4 w-full max-w-lg">
