@@ -12,41 +12,43 @@ export default function RideDetails() {
   const pickupRef = useRef<HTMLInputElement>(null);
   const destinationRef = useRef<HTMLInputElement>(null);
 
-  // ✅ Initialize Google Places Autocomplete (new API)
+  // ✅ Initialize Google Places Autocomplete using global "google"
   useEffect(() => {
-    async function initAutocomplete() {
-      if (!window.google) {
-        console.error("Google Maps API not loaded.");
+    function initAutocomplete() {
+      if (!window.google || !window.google.maps || !window.google.maps.places) {
+        console.error("❌ Google Maps Places API not ready.");
         return;
       }
 
-      const { places } = (await google.maps.importLibrary("places")) as google.maps.PlacesLibrary;
-
+      // Pickup autocomplete
       if (pickupRef.current) {
-        const pickupAutocomplete = new places.Autocomplete(pickupRef.current, { types: ["geocode"] });
+        const pickupAutocomplete = new window.google.maps.places.Autocomplete(pickupRef.current, {
+          types: ["geocode"],
+        });
         pickupAutocomplete.addListener("place_changed", () => {
           const place = pickupAutocomplete.getPlace();
-          if (place.formatted_address) {
-            setPickup(place.formatted_address);
-          }
+          if (place.formatted_address) setPickup(place.formatted_address);
         });
       }
 
+      // Destination autocomplete
       if (destinationRef.current) {
-        const destinationAutocomplete = new places.Autocomplete(destinationRef.current, { types: ["geocode"] });
+        const destinationAutocomplete = new window.google.maps.places.Autocomplete(destinationRef.current, {
+          types: ["geocode"],
+        });
         destinationAutocomplete.addListener("place_changed", () => {
           const place = destinationAutocomplete.getPlace();
-          if (place.formatted_address) {
-            setDestination(place.formatted_address);
-          }
+          if (place.formatted_address) setDestination(place.formatted_address);
         });
       }
     }
 
-    initAutocomplete();
+    // Wait a little in case script is still loading
+    const timeout = setTimeout(initAutocomplete, 500);
+    return () => clearTimeout(timeout);
   }, []);
 
-  // ✅ Load saved data if returning back to page
+  // ✅ Load saved data if user goes back
   useEffect(() => {
     const savedRide = localStorage.getItem("rideDetails");
     if (savedRide) {
@@ -58,7 +60,7 @@ export default function RideDetails() {
     }
   }, []);
 
-  // ✅ Save ride details
+  // ✅ Save and go next
   const handleNext = () => {
     const currentPickup = pickupRef.current?.value || pickup;
     const currentDestination = destinationRef.current?.value || destination;
