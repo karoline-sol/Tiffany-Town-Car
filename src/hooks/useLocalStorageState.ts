@@ -1,3 +1,7 @@
+//the local storage hook does the following:
+//Creates a persistent form state
+//Prevents lost data when navigating or refreshing
+
 import { useState, useEffect } from "react";
 
 /**
