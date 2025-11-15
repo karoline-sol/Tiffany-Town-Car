@@ -59,3 +59,11 @@ echo "VITE_GOOGLE_MAPS_API_KEY=your_api_key_here" > .env
 # 5️⃣ Start the development server
 npm run dev
 ```
+
+## **Made with ❤️ & TypeScript By**:
+
+Caroline Soliman:
+https://github.com/karoline-sol?tab=repositories
+
+Fady Soliman:
+https://github.com/Fadyhub007?tab=repositories
