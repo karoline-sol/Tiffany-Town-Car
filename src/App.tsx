@@ -1,3 +1,6 @@
+//App.tsx is frame of our website, After the main.tsx load the app 
+//contain Navbar and main routings for Home, blog & contact
+
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
@@ -11,10 +14,14 @@ const App: React.FC = () => {
     <>
       {/* Navbar */}
       <nav className="flex justify-between items-center px-8 py-4 bg-black text-white shadow-md">
+
+      {/* logo */}
         <div className="flex items-center space-x-3">
           <img src={logo} alt="Tiffany Towncar logo" className="h-12 w-auto" />
         </div>
 
+        
+      {/* Pages Links */}
         <ul className="flex space-x-8 text-sm font-medium">
           <li>
             <Link to="/" className="hover:text-gray-300 transition">
