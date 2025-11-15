@@ -1,9 +1,13 @@
-
+//ContactDetails.tsx contains the following:
+//✔ Uses your custom localStorage hook for each field
+//✔ Saves all fields again as one object for the summary page
+//✔ Navigates to final step when done
+//✔ Never loses the user’s input
 import { useNavigate } from "react-router-dom"; //➡ ➡ Moves the user to the next page: Booking Summary
 import useLocalStorageState from "../../hooks/useLocalStorageState.ts";////imports the localstorage hook that for auto save and load
 
 export default function ContactDetails() { //define the default export component
-  const navigate = useNavigate(); ////allow the app to move user to another page by routing
+  const navigate = useNavigate(); //allow the app to move user to another page by routing
 
   // ✅ One localStorage state per field (auto-saves as user types)
   const [fullName, setFullName] = useLocalStorageState("fullName", "");
@@ -15,7 +19,7 @@ export default function ContactDetails() { //define the default export component
   const [email, setEmail] = useLocalStorageState("email", "");
   const [confirmEmail, setConfirmEmail] = useLocalStorageState("confirmEmail", "");
 
-  const handleSubmit = () => {
+  const handleSubmit = () => { //➡ Runs when the user clicks “Next”.
     // You can still store everything together if you want
     const contactDetails = {
       fullName,
@@ -27,9 +31,9 @@ export default function ContactDetails() { //define the default export component
       email,
       confirmEmail,
     };
-
+    //although each field is saved individually, this one stores it as one object
     localStorage.setItem("contactDetails", JSON.stringify(contactDetails));
-    navigate("/booking-summary");
+    navigate("/booking-summary"); //allow the app to move user to next page bookingsummary
   };
 
   return (
