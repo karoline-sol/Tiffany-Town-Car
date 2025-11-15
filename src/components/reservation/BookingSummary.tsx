@@ -1,19 +1,14 @@
-import { useEffect, useState } from "react";
-
+//BookingSummary.tsx contains the following:
+//Loads saved booking data from localStorage (using your custom hook)
+//Display all booking details in a summary format
+//Provides clear fallback messages
+//Confirms the booking
+import useLocalStorageState from "../../hooks/useLocalStorageState.ts";
 export default function BookingSummary() {
-  const [rideDetails, setRideDetails] = useState<any>(null);
-  const [vehicle, setVehicle] = useState<any>(null);
-  const [contact, setContact] = useState<any>(null);
-
-  useEffect(() => {
-    const storedRide = JSON.parse(localStorage.getItem("rideDetails") || "null");
-    const selectedVehicle = JSON.parse(localStorage.getItem("selectedVehicle") || "null");
-    const contactDetails = JSON.parse(localStorage.getItem("contactDetails") || "null");
-
-    setRideDetails(storedRide);
-    setVehicle(selectedVehicle);
-    setContact(contactDetails);
-  }, []);
+  // Load everything directly using the hook
+  const [rideDetails] = useLocalStorageState("rideDetails", null);
+  const [vehicle] = useLocalStorageState("selectedVehicle", null);
+  const [contact] = useLocalStorageState("contactDetails", null);
 
   const handleConfirm = () => {
     alert("✅ Booking Confirmed!");
