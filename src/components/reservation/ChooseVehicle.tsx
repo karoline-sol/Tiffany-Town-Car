@@ -15,6 +15,10 @@ export default function ChooseVehicle() {
   const navigate = useNavigate(); //allow the app to move user to another page by routing
 
   // ⭐ Using your custom localStorage hook
+  //selectedVehicle = currently saved vehicle in localStorage
+  //setSelectedVehicle() = saves a new vehicle to localStorage
+  //"selectedVehicle" = the key we store it under
+  //null = default value if nothing is saved
   const [selectedVehicle, setSelectedVehicle] = useLocalStorageState(
     "selectedVehicle",
     null
@@ -51,7 +55,7 @@ export default function ChooseVehicle() {
   // When the user selects a vehicle, store it in localStorage and navigate to contact details
    const handleSelectVehicle = (vehicle: any) => {
     setSelectedVehicle(vehicle); // ⭐ saved through the hook
-    navigate("/contact-details");
+    navigate("/contact-details"); //➡ Moves the user to the next page: Contact Details.
   };
 
   return (
@@ -63,7 +67,7 @@ export default function ChooseVehicle() {
           <div
             key={vehicle.name}
             className="bg-gray-900 rounded-2xl shadow-lg p-5 flex flex-col items-center hover:shadow-xl hover:scale-105 transition-transform cursor-pointer"
-            onClick={() => handleSelectVehicle(vehicle)}
+            onClick={() => handleSelectVehicle(vehicle)} //➡ When the user clicks the card → save vehicle → go next.
           >
             <img
               src={vehicle.image}
