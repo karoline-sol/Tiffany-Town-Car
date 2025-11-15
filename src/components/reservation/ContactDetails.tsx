@@ -1,8 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import useLocalStorageState from "../../hooks/useLocalStorageState.ts";
 
-export default function ContactDetails() {
-  const navigate = useNavigate();
+import { useNavigate } from "react-router-dom"; //➡ ➡ Moves the user to the next page: Booking Summary
+import useLocalStorageState from "../../hooks/useLocalStorageState.ts";////imports the localstorage hook that for auto save and load
+
+export default function ContactDetails() { //define the default export component
+  const navigate = useNavigate(); ////allow the app to move user to another page by routing
 
   // ✅ One localStorage state per field (auto-saves as user types)
   const [fullName, setFullName] = useLocalStorageState("fullName", "");
