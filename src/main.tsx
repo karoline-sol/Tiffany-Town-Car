@@ -28,7 +28,7 @@ loadGoogleMaps()
   .then(() => {
     ReactDOM.createRoot(document.getElementById("root")!).render(
       <React.StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename="/Tiffany-Town-Car/">
           <App />
         </BrowserRouter>
       </React.StrictMode>

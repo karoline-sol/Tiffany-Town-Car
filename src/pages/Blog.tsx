@@ -13,7 +13,7 @@ const Blog: React.FC = () => {
       title: "🍽️ Best Restaurants in Florida",
       description: "Explore Florida’s top-rated restaurants and hidden gems for amazing food experiences.",
       image: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d", // Food photo
-      link: "https://www.visitflorida.com/things-to-do/food-drink/", // external link
+      link: "https://guide.michelin.com/us/en/florida/restaurants", // external link
     },
   ];
 
