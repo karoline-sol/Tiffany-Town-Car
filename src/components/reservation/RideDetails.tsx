@@ -1,20 +1,28 @@
+//useState: Store data - useRef: direct access to inputs - useEffect:run code when component loads
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useLocalStorageState from "../../hooks/useLocalStorageState.ts";
 
+
+//This defines the component and allows other files to import it.
 export default function RideDetails() {
+  //Creates a function that lets you navigate to another page.
   const navigate = useNavigate();
 
-  const [pickup, setPickup] = useState("");
-  const [destination, setDestination] = useState("");
-  const [datetime, setDatetime] = useState("");
-  const [serviceType, setServiceType] = useState("One Way");
+  //React state variables
+  const [pickup, setPickup] = useLocalStorageState("pickup", "");
+  const [destination, setDestination] = useLocalStorageState("destination", "");
+  const [datetime, setDatetime] = useLocalStorageState("datetime", "");
+  const [serviceType, setServiceType] = useLocalStorageState("serviceType", "One Way");
 
+  //5. Input references for Google Autocomplete
   const pickupRef = useRef<HTMLInputElement>(null);
   const destinationRef = useRef<HTMLInputElement>(null);
 
   // ✅ Initialize Google Places Autocomplete using global "google"
   useEffect(() => {
     function initAutocomplete() {
+      //Check if Google script and API is ready
       if (!window.google || !window.google.maps || !window.google.maps.places) {
         console.error("❌ Google Maps Places API not ready.");
         return;
@@ -48,7 +56,7 @@ export default function RideDetails() {
     return () => clearTimeout(timeout);
   }, []);
 
-  // ✅ Load saved data if user goes back
+  // ✅ Load saved data from local storage if user goes back
   useEffect(() => {
     const savedRide = localStorage.getItem("rideDetails");
     if (savedRide) {
@@ -60,8 +68,9 @@ export default function RideDetails() {
     }
   }, []);
 
-  // ✅ Save and go next
+  // ✅ Save and go next button
   const handleNext = () => {
+    //Get the most updated input values
     const currentPickup = pickupRef.current?.value || pickup;
     const currentDestination = destinationRef.current?.value || destination;
 
@@ -69,7 +78,7 @@ export default function RideDetails() {
       alert("Please fill all required fields before continuing.");
       return;
     }
-
+//Saves the info so next page can read it.
     const rideData = {
       serviceType,
       pickup: currentPickup,
@@ -78,6 +87,8 @@ export default function RideDetails() {
     };
 
     localStorage.setItem("rideDetails", JSON.stringify(rideData));
+
+    //Navigate user to the Choose Vehicle page.
     navigate("/choose-vehicle");
   };
 
