@@ -1,6 +1,8 @@
 //the local storage hook does the following:
 //Creates a persistent form state
 //Prevents lost data when navigating or refreshing
+//Handles all localStorage reading / writing so your components stay clean
+//Makes each field auto-save automatically
 
 import { useState, useEffect } from "react";
 
