@@ -1,3 +1,6 @@
+//Home.tsx is used as main landing page of your app (the first screen users see).
+//Imports and renders UI components like banners, progress bar, cards (testmonial),sections.
+
 import { Link, Routes, Route, useLocation } from "react-router-dom";
 import mainimg from "../assets/mainimg.png";
 import RideDetails from "../components/reservation/RideDetails";
@@ -6,7 +9,9 @@ import ContactDetails from "../components/reservation/ContactDetails";
 import BookingSummary from "../components/reservation/BookingSummary";
 
 function Home(): JSX.Element {
-  const location = useLocation();
+
+  //Used Below know which step the user is on.
+  const location = useLocation(); 
 
   // Step labels for the progress bar
   const steps = ["Ride Details", "Choose a Vehicle", "Contact Details", "Booking Summary"];
@@ -80,28 +85,42 @@ function Home(): JSX.Element {
         </h2>
 
         <div className="flex flex-wrap justify-center gap-6">
-          {[
-            { name: "John Smith", stars: 4 },
-            { name: "Ann Johnson", stars: 5 },
-            { name: "Robert G.", stars: 4 },
-          ].map((client, i) => (
-            <div
-              key={i}
-              className="bg-gray-900 text-gray-300 p-6 rounded-xl w-72 shadow-md"
-            >
-              <p className="text-5xl text-gray-500 mb-4">“</p>
-              <p className="mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim tincidunt.
-              </p>
-              <h3 className="text-white font-semibold">{client.name}</h3>
-              <div className="text-yellow-400 mt-2">
-                {"★".repeat(client.stars)}
-                {"☆".repeat(5 - client.stars)}
-              </div>
-            </div>
-          ))}
+    {[
+      {
+        name: "John Smith",
+        stars: 4,
+        quote: "Great service! My driver was on time and very friendly.",
+      },
+      {
+        name: "Ann Johnson",
+        stars: 5,
+        quote: "Amazing experience. The vehicle was spotless and super comfortable.",
+      },
+      {
+        name: "Robert G.",
+        stars: 4,
+        quote: "Smooth ride and excellent communication throughout the trip.",
+      },
+    ].map((client, i) => (
+      <div
+        key={i}
+        className="bg-gray-900 text-gray-300 p-6 rounded-xl w-72 shadow-md"
+      >
+        <p className="text-5xl text-gray-500 mb-4">“</p>
+
+        {/* Custom quote */}
+        <p className="mb-4">{client.quote}</p>
+
+        <h3 className="text-white font-semibold">{client.name}</h3>
+
+        <div className="text-yellow-400 mt-2">
+          {"★".repeat(client.stars)}
+          {"☆".repeat(5 - client.stars)}
         </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-center py-6 text-gray-400">
