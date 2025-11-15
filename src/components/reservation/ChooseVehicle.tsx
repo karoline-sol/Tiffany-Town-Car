@@ -1,11 +1,24 @@
-//ChooseVehicle.tsx 
-import { useNavigate } from "react-router-dom";
+//ChooseVehicle.tsx is the following used for the following:
+//Showing all available vehicle options in clean responsive card
+//Saving the chosen vehicle in localStorage using our hook
+//Move user to next step contact.Details.tsx
+
+
+import { useNavigate } from "react-router-dom"; //allow the app to move user to another page by routing
+import useLocalStorageState from "../../hooks/useLocalStorageState.ts"; //imports the localstorage hook that for auto save and load
 import minivan from "../../assets/minivan.png";
 import towncar from "../../assets/towncar.png";
 import suv from "../../assets/suv.png";
 
+//define the defauly export component
 export default function ChooseVehicle() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); //allow the app to move user to another page by routing
+
+  // ⭐ Using your custom localStorage hook
+  const [selectedVehicle, setSelectedVehicle] = useLocalStorageState(
+    "selectedVehicle",
+    null
+  );
 
   // Define available vehicles with full details
   const vehicles = [
@@ -36,8 +49,8 @@ export default function ChooseVehicle() {
   ];
 
   // When the user selects a vehicle, store it in localStorage and navigate to contact details
-  const handleSelectVehicle = (vehicle: any) => {
-    localStorage.setItem("selectedVehicle", JSON.stringify(vehicle));
+   const handleSelectVehicle = (vehicle: any) => {
+    setSelectedVehicle(vehicle); // ⭐ saved through the hook
     navigate("/contact-details");
   };
 

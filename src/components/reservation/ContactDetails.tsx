@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import useLocalStorageState from "../../hooks/useLocalStorageState";
+import useLocalStorageState from "../../hooks/useLocalStorageState.ts";
 
 export default function ContactDetails() {
   const navigate = useNavigate();
