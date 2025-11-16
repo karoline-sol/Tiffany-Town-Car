@@ -61,10 +61,10 @@ export default function RideDetails() {
     const savedRide = localStorage.getItem("rideDetails");
     if (savedRide) {
       const data = JSON.parse(savedRide);
-      setPickup(data.pickup || "");
-      setDestination(data.destination || "");
-      setDatetime(data.datetime || "");
-      setServiceType(data.serviceType || "One Way");
+      setPickup(data?.pickup || "");
+      setDestination(data?.destination || "");
+      setDatetime(data?.datetime || "");
+      setServiceType(data?.serviceType || "One Way");
     }
   }, []);
 
