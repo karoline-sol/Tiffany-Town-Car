@@ -1,8 +1,13 @@
 //useState: Store data - useRef: direct access to inputs - useEffect:run code when component loads
-import { useState, useRef, useEffect } from "react";
+import {  useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalStorageState from "../../hooks/useLocalStorageState.ts";
 
+declare global {
+  interface Window {
+    google: any;
+  }
+}
 
 //This defines the component and allows other files to import it.
 export default function RideDetails() {

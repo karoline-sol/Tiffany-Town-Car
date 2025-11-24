@@ -4,11 +4,40 @@
 //Provides clear fallback messages
 //Confirms the booking
 import useLocalStorageState from "../../hooks/useLocalStorageState.ts";
+
+interface RideDetails {
+  serviceType: string;
+  pickup: string;
+  destination: string;
+  datetime: string;
+  flightNumber?: string;
+}
+
+interface Vehicle {
+  name: string;
+  seats: number;
+  luggage: number;
+  price: string;
+  image?: string;
+}
+
+interface ContactDetails {
+  fullName: string;
+  phone: string;
+  address: string;
+  city: string;
+  state: string;
+  zip: string;
+  email: string;
+}
+
 export default function BookingSummary() {
   // Load everything directly using the hook
-  const [rideDetails] = useLocalStorageState("rideDetails", null);
-  const [vehicle] = useLocalStorageState("selectedVehicle", null);
-  const [contact] = useLocalStorageState("contactDetails", null);
+  
+const [rideDetails] = useLocalStorageState<RideDetails | null>("rideDetails", null);
+const [vehicle] = useLocalStorageState<Vehicle | null>("selectedVehicle", null);
+const [contact] = useLocalStorageState<ContactDetails | null>("contactDetails", null);
+
 
   const handleConfirm = () => {
     alert("✅ Booking Confirmed!");
