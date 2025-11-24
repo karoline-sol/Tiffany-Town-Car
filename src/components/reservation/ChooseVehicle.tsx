@@ -19,7 +19,7 @@ export default function ChooseVehicle() {
   //setSelectedVehicle() = saves a new vehicle to localStorage
   //"selectedVehicle" = the key we store it under
   //null = default value if nothing is saved
-  const [selectedVehicle, setSelectedVehicle] = useLocalStorageState(
+  const [, setSelectedVehicle] = useLocalStorageState(
     "selectedVehicle",
     null
   );

@@ -8,7 +8,7 @@ import ChooseVehicle from "../components/reservation/ChooseVehicle";
 import ContactDetails from "../components/reservation/ContactDetails";
 import BookingSummary from "../components/reservation/BookingSummary";
 
-function Home(): JSX.Element {
+function Home() {
 
   //Used Below know which step the user is on.
   const location = useLocation(); 
